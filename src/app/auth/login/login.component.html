@@ -13,7 +13,7 @@
       <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty</mat-error>
       <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
     </mat-form-field>
-    <mat-form-field hintLabel="Should be at least 6 characters">
+    <mat-form-field>
       <input
         matInput
         type="password"
@@ -23,8 +23,7 @@
         required
         minlength="6"
         #pwInput="ngModel">
-      <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
-      <mat-error>Has to be at least 6 characters</mat-error>
+      <mat-error *ngIf="pwInput.hasError('required')">Password must not be empty</mat-error>
     </mat-form-field>
     <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Login</button>
   </form>

@@ -6,7 +6,8 @@ import {
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MAT_DATE_LOCALE
 } from '@angular/material';
 
 @NgModule({
@@ -27,7 +28,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule
-  ]
+  ],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}]
 })
 export  class MaterialModule {
 

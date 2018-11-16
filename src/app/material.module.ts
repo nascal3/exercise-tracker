@@ -12,7 +12,8 @@ import {
   MatToolbarModule,
   MatListModule,
   MatTabsModule,
-  MatCardModule
+  MatCardModule,
+  MatSelectModule
 } from '@angular/material';
 
 @NgModule({
@@ -28,7 +29,8 @@ import {
     MatToolbarModule,
     MatListModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -42,7 +44,8 @@ import {
     MatToolbarModule,
     MatListModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}]
 })

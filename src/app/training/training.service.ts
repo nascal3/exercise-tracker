@@ -1,3 +1,4 @@
+
 import {ExerciseModel} from './exercise.model';
 
 export class TrainingService {
@@ -8,7 +9,13 @@ export class TrainingService {
     {id: 'burpees', name: 'Burpees', duration: 60, calories: 8}
   ] ;
 
+  private runningExcersice: ExerciseModel;
+
   getAvailableExercises() {
     return this.availableExercises.slice();
+  }
+
+  startExercise(selectedId: string) {
+    this.runningExcersice = this.availableExercises.find(ex => ex.id === selectedId);
   }
 }

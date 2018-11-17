@@ -1,4 +1,4 @@
 export interface AuthDataModel {
   email: string;
-  passport: string;
+  password: string;
 }

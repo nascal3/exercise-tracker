@@ -7,7 +7,7 @@ import {AuthService} from '../../auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
   isAuth = false;
   authSubscription: Subscription;
@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
-    console.log('The component is destroyed');
   }
 
 }

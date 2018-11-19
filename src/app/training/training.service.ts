@@ -10,7 +10,7 @@ export class TrainingService {
     {id: 'burpees', name: 'Burpees', duration: 60, calories: 8}
   ] ;
 
-  private runningExcersice: ExerciseModel;
+  private runningExcercise: ExerciseModel;
   private  exercises: ExerciseModel[] = [];
 
   getAvailableExercises() {
@@ -18,31 +18,35 @@ export class TrainingService {
   }
 
   startExercise(selectedId: string) {
-    this.runningExcersice = this.availableExercises.find(ex => ex.id === selectedId);
-    this.exerciseChanged.next({...this.runningExcersice});
+    this.runningExcercise = this.availableExercises.find(ex => ex.id === selectedId);
+    this.exerciseChanged.next({...this.runningExcercise});
   }
 
   completeExcercise() {
     this.exercises.push({
-      ...this.runningExcersice,
+      ...this.runningExcercise,
       date: new Date(),
       state: 'completed'});
-    this.runningExcersice = null;
+    this.runningExcercise = null;
     this.exerciseChanged.next(null);
   }
 
   cancelExercise(progress: number) {
     this.exercises.push({
-      ...this.runningExcersice,
+      ...this.runningExcercise,
       date: new Date(),
-      duration: this.runningExcersice.duration * (progress / 100),
-      calories: this.runningExcersice.duration * (progress / 100),
+      duration: this.runningExcercise.duration * (progress / 100),
+      calories: this.runningExcercise.calories * (progress / 100),
       state: 'cancelled'});
-    this.runningExcersice = null;
+    this.runningExcercise = null;
     this.exerciseChanged.next(null);
   }
 
-  getRunningExcersice() {
-    return {...this.runningExcersice};
+  getrunningExcercise() {
+    return {...this.runningExcercise};
+  }
+
+  getCompletedAndCancelledExercises() {
+    return this.exercises.slice();
   }
 }

@@ -17,7 +17,8 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatTableModule,
-  MatSortModule
+  MatSortModule,
+  MatPaginatorModule
 } from '@angular/material';
 
 @NgModule({
@@ -38,7 +39,8 @@ import {
     MatProgressSpinnerModule,
     MatDialogModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ],
   exports: [
     MatButtonModule,
@@ -57,7 +59,8 @@ import {
     MatProgressSpinnerModule,
     MatDialogModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}]
 })

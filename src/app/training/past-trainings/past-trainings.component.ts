@@ -21,7 +21,6 @@ export class PastTrainingsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dataSource.data = this.trainingService.getCompletedAndCancelledExercises();
     this.dataLength = this.dataSource.data.length;
-    console.log('>>>', this.dataSource.data.length);
   }
 
   ngAfterViewInit() {

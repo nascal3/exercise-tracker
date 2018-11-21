@@ -22,10 +22,12 @@ export class AuthService {
   }
 
   login(authData: AuthDataModel) {
-    this.user = {
-      email: authData.email,
-      userId: Math.round(Math.random() * 10000).toString()
-    };
+    this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password).then(result => {
+      console.log(result);
+      this.authSuccessfully();
+    }).catch( error => {
+      console.log(error);
+    });
     this.authSuccessfully();
   }
 

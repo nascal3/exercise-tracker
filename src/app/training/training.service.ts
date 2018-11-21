@@ -8,10 +8,10 @@ import {Injectable} from '@angular/core';
 export class TrainingService {
   exerciseChanged = new Subject<ExerciseModel>();
   exercisesChanged = new Subject<ExerciseModel[]>();
+  finishedExercisesChanged = new Subject<ExerciseModel[]>();
   private availableExercises: ExerciseModel[] = [] ;
 
-  private runningExcercise: ExerciseModel;
-  private  exercises: ExerciseModel[] = [];
+  private runningExercises: ExerciseModel;
 
   constructor(private db: AngularFirestore) {}
 
@@ -33,36 +33,38 @@ export class TrainingService {
   }
 
   startExercise(selectedId: string) {
-    this.runningExcercise = this.availableExercises.find(ex => ex.id === selectedId);
-    this.exerciseChanged.next({...this.runningExcercise});
+    this.runningExercises = this.availableExercises.find(ex => ex.id === selectedId);
+    this.exerciseChanged.next({...this.runningExercises});
   }
 
   completeExcercise() {
     this.addDataToDatabase({
-      ...this.runningExcercise,
+      ...this.runningExercises,
       date: new Date(),
       state: 'completed'});
-    this.runningExcercise = null;
+    this.runningExercises = null;
     this.exerciseChanged.next(null);
   }
 
   cancelExercise(progress: number) {
     this.addDataToDatabase({
-      ...this.runningExcercise,
+      ...this.runningExercises,
       date: new Date(),
-      duration: this.runningExcercise.duration * (progress / 100),
-      calories: this.runningExcercise.calories * (progress / 100),
+      duration: this.runningExercises.duration * (progress / 100),
+      calories: this.runningExercises.calories * (progress / 100),
       state: 'cancelled'});
-    this.runningExcercise = null;
+    this.runningExercises = null;
     this.exerciseChanged.next(null);
   }
 
   getrunningExcercise() {
-    return {...this.runningExcercise};
+    return {...this.runningExercises};
   }
 
-  getCompletedAndCancelledExercises() {
-    return this.exercises.slice();
+  fetchCompletedAndCancelledExercises() {
+    this.db.collection('finishedExercises').valueChanges().subscribe((exercises: ExerciseModel[]) => {
+      this.finishedExercisesChanged.next(exercises);
+    });
   }
 
   private addDataToDatabase(exercise: ExerciseModel) {

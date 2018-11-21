@@ -11,12 +11,12 @@ import {Subscription} from 'rxjs';
 })
 export class NewTrainingComponent implements OnInit, OnDestroy {
   exercises: ExerciseModel[];
-  exerciseSubscriprion: Subscription;
+  exerciseSubscription: Subscription;
 
   constructor(private trainingService: TrainingService) { }
 
   ngOnInit() {
-    this.exerciseSubscriprion = this.trainingService.exercisesChanged.subscribe(
+    this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(
       exercises => this.exercises = exercises
     );
     this.trainingService.fetchAvailableExercises();
@@ -27,7 +27,7 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.exerciseSubscriprion.unsubscribe();
+    this.exerciseSubscription.unsubscribe();
   }
 
 }

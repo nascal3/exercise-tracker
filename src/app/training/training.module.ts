@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFirestoreModule,
   ],
   exports: []
 })

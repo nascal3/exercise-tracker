@@ -37,7 +37,7 @@ export class TrainingService {
           });
         })
       ).subscribe((exercises: ExerciseModel[]) => {
-        this.store.dispatch(new Training.SetFinishedTrainings(exercises)) ;
+        this.store.dispatch(new Training.SetAvailableTrainings(exercises)) ;
       }, error => {
         this.uiService.loadingStateChanged.next(false);
         this.uiService.showSnackbar('Fetching exercises failed, please try again later!', null, 3000);

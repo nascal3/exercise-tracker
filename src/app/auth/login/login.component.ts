@@ -3,8 +3,7 @@ import {NgForm} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {UiService} from '../../shared/ui.service';
 import {Observable, Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import * as fromRoot from '../../app.reducer';
 
 
@@ -24,7 +23,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isLoading$ = this.store.select(fromRoot.getIsLoaidng);
+    this.isLoading$ = this.store.pipe(select(fromRoot.getIsLoaidng));
     // this.loadingSubs = this.uiService.loadingStateChanged.subscribe(isLoading => {
     //   this.isLoading = isLoading;
     // });

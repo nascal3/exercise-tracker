@@ -1,10 +1,10 @@
 # Excercise Tracker
 
-This project was generated with [Angular CLI](https://nascal3.github.io/exercise-tracker) version 7.0.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
 
 ## Excercise Tracker Demo
 
-Visit the project [here](https://github.com/angular/angular-cli) to test it.
+Visit the project [here](https://nascal3.github.io/exercise-tracker/) to test it.
 Login credentials are, <br> **_username: nascal3@gmail.com_**,<br> **_password: 99fZDk7&wq%1_** 
 
 ## Development server

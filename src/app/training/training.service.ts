@@ -45,7 +45,6 @@ export class TrainingService {
 
   completeExercise() {
     this.store.pipe(select(fromTraining.getActiveTraining), take(1)).subscribe( (exercise: ExerciseModel) => {
-      console.log(exercise);
       this.addDataToDatabase({
         ...exercise,
         date: new Date(),

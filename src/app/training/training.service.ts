@@ -11,10 +11,7 @@ import {select, Store} from '@ngrx/store';
 
 @Injectable()
 export class TrainingService {
-  exercisesChanged = new Subject<ExerciseModel[]>();
-  finishedExercisesChanged = new Subject<ExerciseModel[]>();
   private fbSubscriptions: Subscription[] = [];
-
   private runningExercises: ExerciseModel;
 
   constructor(
@@ -39,7 +36,6 @@ export class TrainingService {
       }, error => {
         this.uiService.loadingStateChanged.next(false);
         this.uiService.showSnackbar('Fetching exercises failed, please try again later!', null, 3000);
-        this.exercisesChanged.next(null);
       }));
   }
 
